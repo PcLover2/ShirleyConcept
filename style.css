@@ -1,0 +1,199 @@
+@charset "UTF-8";
+/* 
+$content-width will be the max width of the content within the navigation bar. 
+$breakpoint determines at which width the media query breakpoint will take effect.
+*/
+
+body {
+  background-color: #63D6E0;
+  margin: 0px;
+ font-family: 'DM Sans', sans-serif;
+}
+
+/* Nav */
+
+  nav {
+    float: right;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #1a535c;
+  }
+  nav ul li {
+    float: left;
+    position: relative;
+  }
+  nav ul li a {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    background: #1A535C;
+    color: #ffffff;
+    text-decoration: none;
+    /*
+    The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
+    */
+  }
+
+  nav ul li a:not(:only-child):after {
+    padding-left: 4px;
+    content: ' ▾';
+  }
+  nav ul li ul li {
+    min-width: 190px;
+  }
+  nav ul li ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+
+  .nav-mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #1A535C;
+    height: 70px;
+    width: 70px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .nav-mobile {
+      display: block;
+    }
+
+    nav ul li a:hover {
+      background: #103338;
+      color: #ffffff;
+      transition-duration: 1s;
+    }
+
+    nav {
+      width: 100%;
+      padding: 70px 0 15px;
+    }
+    nav ul {
+      display: none;
+    }
+    nav ul li {
+      float: none;
+    }
+    nav ul li a {
+      padding: 15px;
+      line-height: 20px;
+    }
+    nav ul li ul li a {
+      padding-left: 30px;
+    }
+    .li-link-top{
+      padding-top: 20px;
+    }
+  }
+  #nav-toggle {
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+  }
+  #nav-toggle span,
+  #nav-toggle span:before,
+  #nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 3px;
+    width: 30px;
+    background: #ffffff;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 300ms ease-in-out;
+  }
+  #nav-toggle span:before {
+    top: -10px;
+  }
+  #nav-toggle span:after {
+    top: 10px;
+  }
+  #nav-toggle.active span {
+    background-color: transparent;
+  }
+  #nav-toggle.active span:before, #nav-toggle.active span:after {
+    top: 0;
+  }
+  #nav-toggle.active span:before {
+    transform: rotate(45deg);
+  }
+  #nav-toggle.active span:after {
+    transform: rotate(-45deg);
+  }
+
+  @media screen and (min-width: 800px) {
+    .nav-list {
+      display: block !important;
+    }
+
+    .nav-link::before {
+      transition: 300ms;
+      height: 2px;
+      content: "";
+      position: absolute;
+      background-color: #ffffff;
+      width: 0%;
+      bottom: 17px;
+    }
+    
+    .nav-link:hover::before {
+      width: calc(100% - 40px);
+    }
+  }
+  /* 
+  .navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
+  */
+  .navigation {
+    height: 70px;
+    background: #1A535C;
+  }
+
+  /*
+  .nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
+  */
+  .nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    position: absolute;
+    padding-left: 20px;
+    float: left;
+    line-height: 70px;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    font-family: 'Caveat', cursive;
+    font-weight: 800;
+    z-index: 999;
+  }
+  .brand a,
+  .brand a:visited {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+.hero{
+  height: calc(100vh - 70px);
+  background-image: url(images/hero.jpg);
+  background-position: center bottom; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  text-align: center;
+  line-height: calc(100vh - 70px);
+}
+
+h1, h3{
+  margin-top: 0px;
+}
